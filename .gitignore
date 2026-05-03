@@ -1,0 +1,11 @@
+node_modules
+dist
+.dev.vars
+.wrangler
+*.log
+openspec
+.claude
+notes
+lessons/.vitepress/cache
+
+CLAUDE.md
