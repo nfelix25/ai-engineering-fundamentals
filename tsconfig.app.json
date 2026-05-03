@@ -15,8 +15,9 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "types": ["@cloudflare/workers-types"],
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["src/worker.ts"]
+  "exclude": ["src/worker.ts"],
 }
