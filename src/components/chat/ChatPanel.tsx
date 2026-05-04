@@ -12,6 +12,8 @@ interface ChatPanelProps {
   status: string;
 }
 
+const STREAMING_STATUSES = ["submitted", "streaming"];
+
 export default function ChatPanel({
   messages,
   sendMessage,
@@ -31,7 +33,7 @@ export default function ChatPanel({
     setInput("");
   };
 
-  const isStreaming = ["submitted", "streaming"].includes(status);
+  const isStreaming = STREAMING_STATUSES.includes(status);
 
   return (
     <div className="chat-panel">
