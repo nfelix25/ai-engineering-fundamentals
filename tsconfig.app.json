@@ -16,8 +16,13 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
-    "types": ["@cloudflare/workers-types"],
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["src/worker.ts"],
+  // Included in the worker config
+  "exclude": [
+    "src/worker.ts",
+    "src/agent.ts",
+    "src/tools.ts",
+    "src/schemas.ts",
+  ],
 }
