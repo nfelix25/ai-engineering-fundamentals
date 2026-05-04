@@ -12,46 +12,74 @@ export const tools = {
     description:
       "Generate a complete diagram as an array of Excalidraw elements. Use this when the user asks you to create, draw, or design a new diagram. Return all elements needed including shapes, text labels, and arrows/lines connecting them. Position elements with x,y coordinates and give each a unique id.",
     inputSchema: z.object({
-      elements: z.array(
-        z.object({
-          id: z.string().describe("Unique identifier"),
-          type: z.enum(["rectangle", "ellipse", "diamond", "text", "arrow", "line"]),
-          x: z.number().describe("X position"),
-          y: z.number().describe("Y position"),
-          width: z.number().describe("Width"),
-          height: z.number().describe("Height"),
-          strokeColor: z.string().default("#1e1e1e").describe("Stroke color (hex)"),
-          backgroundColor: z.string().default("transparent").describe("Fill color"),
-          fillStyle: z.enum(["solid", "hachure", "cross-hatch"]).default("solid"),
-          strokeWidth: z.number().default(2),
-          roughness: z.number().default(1).describe("0 for clean, 1 for sketchy"),
-          opacity: z.number().default(100),
-          text: z.string().optional().describe("Text content (for text elements)"),
-          fontSize: z.number().default(20),
-          fontFamily: z.number().default(1).describe("1=Virgil, 2=Helvetica, 3=Cascadia"),
-          textAlign: z.enum(["left", "center", "right"]).default("center"),
-          points: z
-            .array(z.array(z.number()))
-            .optional()
-            .describe("Array of [x,y] points (for arrow/line elements). Each point is a two number array."),
-          startBinding: z
-            .object({
-              elementId: z.string(),
-              focus: z.number(),
-              gap: z.number(),
-            })
-            .optional()
-            .describe("Bind arrow start to an element"),
-          endBinding: z
-            .object({
-              elementId: z.string(),
-              focus: z.number(),
-              gap: z.number(),
-            })
-            .optional()
-            .describe("Bind arrow end to an element"),
-        })
-      ).describe("Array of Excalidraw elements that make up the diagram"),
+      elements: z
+        .array(
+          z.object({
+            id: z.string().describe("Unique identifier"),
+            type: z.enum([
+              "rectangle",
+              "ellipse",
+              "diamond",
+              "text",
+              "arrow",
+              "line",
+            ]),
+            x: z.number().describe("X position"),
+            y: z.number().describe("Y position"),
+            width: z.number().describe("Width"),
+            height: z.number().describe("Height"),
+            strokeColor: z
+              .string()
+              .default("#1e1e1e")
+              .describe("Stroke color (hex)"),
+            backgroundColor: z
+              .string()
+              .default("transparent")
+              .describe("Fill color"),
+            fillStyle: z
+              .enum(["solid", "hachure", "cross-hatch"])
+              .default("solid"),
+            strokeWidth: z.number().default(2),
+            roughness: z
+              .number()
+              .default(1)
+              .describe("0 for clean, 1 for sketchy"),
+            opacity: z.number().default(100),
+            text: z
+              .string()
+              .optional()
+              .describe("Text content (for text elements)"),
+            fontSize: z.number().default(20),
+            fontFamily: z
+              .number()
+              .default(1)
+              .describe("1=Virgil, 2=Helvetica, 3=Cascadia"),
+            textAlign: z.enum(["left", "center", "right"]).default("center"),
+            points: z
+              .array(z.array(z.number()))
+              .optional()
+              .describe(
+                "Array of [x,y] points (for arrow/line elements). Each point is a two number array.",
+              ),
+            startBinding: z
+              .object({
+                elementId: z.string(),
+                focus: z.number(),
+                gap: z.number(),
+              })
+              .optional()
+              .describe("Bind arrow start to an element"),
+            endBinding: z
+              .object({
+                elementId: z.string(),
+                focus: z.number(),
+                gap: z.number(),
+              })
+              .optional()
+              .describe("Bind arrow end to an element"),
+          }),
+        )
+        .describe("Array of Excalidraw elements that make up the diagram"),
     }),
     execute: async ({ elements }) => {
       // Pass through. The LLM generates the elements, we just return them.
@@ -76,17 +104,28 @@ export const tools = {
           y: z.number().nullable().describe("New y position, or null"),
           width: z.number().nullable().describe("New width, or null"),
           height: z.number().nullable().describe("New height, or null"),
-          text: z.string().nullable().describe("New label or text content, or null"),
+          text: z
+            .string()
+            .nullable()
+            .describe("New label or text content, or null"),
           fontSize: z.number().nullable(),
           textAlign: z.enum(["left", "center", "right"]).nullable(),
-          strokeColor: z.string().nullable().describe("Hex stroke color, or null"),
-          backgroundColor: z.string().nullable().describe("Hex fill color, or null"),
+          strokeColor: z
+            .string()
+            .nullable()
+            .describe("Hex stroke color, or null"),
+          backgroundColor: z
+            .string()
+            .nullable()
+            .describe("Hex fill color, or null"),
           fillStyle: z.enum(["solid", "hachure", "cross-hatch"]).nullable(),
           strokeWidth: z.number().nullable(),
           roughness: z.number().nullable(),
           opacity: z.number().nullable(),
         })
-        .describe("Fields to change. Set any field you don't want to touch to null."),
+        .describe(
+          "Fields to change. Set any field you don't want to touch to null.",
+        ),
     }),
     execute: async ({ elementId, updates }) => {
       // Filter out null fields so the client only sees what should actually
@@ -99,4 +138,4 @@ export const tools = {
       return { elementId, updates: filtered };
     },
   }),
-};
+} as const;
