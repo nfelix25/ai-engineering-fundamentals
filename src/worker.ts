@@ -3,7 +3,7 @@ import { routeAgentRequest } from "agents";
 
 export { DesignAgent };
 
-interface Env {
+interface Env extends Cloudflare.Env {
   DesignAgent: DurableObjectNamespace;
   OPENAI_API_KEY: string;
 }

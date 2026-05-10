@@ -58,7 +58,6 @@
     "difficulty": "simple",
     "category": "create"
   },
-
   {
     "id": "create-medium-01",
     "input": "Draw a login flow: user enters credentials, system validates, if valid go to dashboard, if invalid show error",
@@ -120,7 +119,6 @@
     "difficulty": "medium",
     "category": "create"
   },
-
   {
     "id": "create-complex-01",
     "input": "Draw an org chart for a company: CEO at top, 3 VPs reporting to CEO (Engineering, Sales, Marketing), each VP has 3 directors under them",
@@ -145,7 +143,14 @@
       "Arrows from gateway to each service and from each service to its database",
       "Additional arrow from Order Service to Payment Service"
     ],
-    "expectedKeywords": ["api gateway", "auth", "user", "order", "payment", "database"],
+    "expectedKeywords": [
+      "api gateway",
+      "auth",
+      "user",
+      "order",
+      "payment",
+      "database"
+    ],
     "difficulty": "hard",
     "category": "create"
   },
@@ -177,7 +182,6 @@
     "difficulty": "hard",
     "category": "create"
   },
-
   {
     "id": "modify-01",
     "input": "make the login box red",
@@ -185,8 +189,24 @@
       "userPrompt": "draw two rectangles labeled login and database",
       "assistantConfirmation": "Done. I drew a login box on the left and a database box on the right.",
       "elements": [
-        { "id": "rect_login", "type": "rectangle", "x": 100, "y": 100, "width": 200, "height": 80, "text": "login" },
-        { "id": "rect_db", "type": "rectangle", "x": 500, "y": 100, "width": 200, "height": 80, "text": "database" }
+        {
+          "id": "rect_login",
+          "type": "rectangle",
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 80,
+          "text": "login"
+        },
+        {
+          "id": "rect_db",
+          "type": "rectangle",
+          "x": 500,
+          "y": 100,
+          "width": 200,
+          "height": 80,
+          "text": "database"
+        }
       ]
     },
     "expectedCharacteristics": [
@@ -205,8 +225,24 @@
       "userPrompt": "draw two rectangles labeled login and database",
       "assistantConfirmation": "Done. login and database boxes are on the canvas.",
       "elements": [
-        { "id": "rect_login", "type": "rectangle", "x": 100, "y": 100, "width": 200, "height": 80, "text": "login" },
-        { "id": "rect_db", "type": "rectangle", "x": 500, "y": 100, "width": 200, "height": 80, "text": "database" }
+        {
+          "id": "rect_login",
+          "type": "rectangle",
+          "x": 100,
+          "y": 100,
+          "width": 200,
+          "height": 80,
+          "text": "login"
+        },
+        {
+          "id": "rect_db",
+          "type": "rectangle",
+          "x": 500,
+          "y": 100,
+          "width": 200,
+          "height": 80,
+          "text": "database"
+        }
       ]
     },
     "expectedCharacteristics": [
@@ -225,11 +261,49 @@
       "userPrompt": "draw a flowchart with Start, Process, and End",
       "assistantConfirmation": "Here's the Start, Process, End flowchart.",
       "elements": [
-        { "id": "rect_start", "type": "rectangle", "x": 100, "y": 100, "width": 160, "height": 60, "text": "Start" },
-        { "id": "rect_process", "type": "rectangle", "x": 320, "y": 100, "width": 160, "height": 60, "text": "Process" },
-        { "id": "rect_end", "type": "rectangle", "x": 540, "y": 100, "width": 160, "height": 60, "text": "End" },
-        { "id": "arrow_1", "type": "arrow", "x": 260, "y": 130, "width": 60, "height": 0 },
-        { "id": "arrow_2", "type": "arrow", "x": 480, "y": 130, "width": 60, "height": 0 }
+        {
+          "id": "rect_start",
+          "type": "rectangle",
+          "x": 100,
+          "y": 100,
+          "width": 160,
+          "height": 60,
+          "text": "Start"
+        },
+        {
+          "id": "rect_process",
+          "type": "rectangle",
+          "x": 320,
+          "y": 100,
+          "width": 160,
+          "height": 60,
+          "text": "Process"
+        },
+        {
+          "id": "rect_end",
+          "type": "rectangle",
+          "x": 540,
+          "y": 100,
+          "width": 160,
+          "height": 60,
+          "text": "End"
+        },
+        {
+          "id": "arrow_1",
+          "type": "arrow",
+          "x": 260,
+          "y": 130,
+          "width": 60,
+          "height": 0
+        },
+        {
+          "id": "arrow_2",
+          "type": "arrow",
+          "x": 480,
+          "y": 130,
+          "width": 60,
+          "height": 0
+        }
       ]
     },
     "expectedCharacteristics": [
@@ -239,7 +313,13 @@
       "Arrows still present"
     ],
     "expectedKeywords": ["start", "validate", "end"],
-    "preservedIds": ["rect_start", "rect_process", "rect_end", "arrow_1", "arrow_2"],
+    "preservedIds": [
+      "rect_start",
+      "rect_process",
+      "rect_end",
+      "arrow_1",
+      "arrow_2"
+    ],
     "difficulty": "medium",
     "category": "modify"
   },
@@ -250,9 +330,32 @@
       "userPrompt": "draw an API box connected to a Database box",
       "assistantConfirmation": "Done. API on the left, Database on the right, with an arrow between them.",
       "elements": [
-        { "id": "rect_api", "type": "rectangle", "x": 100, "y": 100, "width": 160, "height": 60, "text": "API" },
-        { "id": "rect_db", "type": "rectangle", "x": 500, "y": 100, "width": 160, "height": 60, "text": "Database" },
-        { "id": "arrow_api_db", "type": "arrow", "x": 260, "y": 130, "width": 240, "height": 0 }
+        {
+          "id": "rect_api",
+          "type": "rectangle",
+          "x": 100,
+          "y": 100,
+          "width": 160,
+          "height": 60,
+          "text": "API"
+        },
+        {
+          "id": "rect_db",
+          "type": "rectangle",
+          "x": 500,
+          "y": 100,
+          "width": 160,
+          "height": 60,
+          "text": "Database"
+        },
+        {
+          "id": "arrow_api_db",
+          "type": "arrow",
+          "x": 260,
+          "y": 130,
+          "width": 240,
+          "height": 0
+        }
       ]
     },
     "expectedCharacteristics": [
@@ -266,7 +369,6 @@
     "difficulty": "hard",
     "category": "modify"
   },
-
   {
     "id": "domain-01",
     "input": "Draw the OAuth 2.0 authorization code flow",
@@ -321,7 +423,6 @@
     "difficulty": "hard",
     "category": "domain"
   },
-
   {
     "id": "edge-01",
     "input": "draw something",

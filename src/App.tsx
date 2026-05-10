@@ -11,7 +11,7 @@ import {
   CaptureUpdateAction,
   convertToExcalidrawElements,
   newElementWith,
-} from "@excalidraw/excalidraw/index";
+} from "@excalidraw/excalidraw";
 
 const sessionId = crypto.randomUUID();
 const TOOL_NAMES = Object.keys(tools).map((n) => `tool-${n}`);
